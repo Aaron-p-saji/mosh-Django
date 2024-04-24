@@ -12,7 +12,7 @@ class Product(models.Model):
     title = models.CharField(max_length=100, verbose_name="Title", null=False)
     slug = models.SlugField(default="-")
     description = models.TextField()
-    price = models.DecimalField(max_digits=7, decimal_places=2)
+    unit_price = models.DecimalField(max_digits=7, decimal_places=2)
     inventory = models.IntegerField()
     last_update = models.DateTimeField(auto_now=True)
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
@@ -31,7 +31,7 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
     email = models.EmailField(unique=True)
-    phone = models.CharField(max_length=10)
+    phone = models.CharField(max_length=15)
     birth_date = models.DateField(null=True)
     membership = models.CharField(max_length=1, choices=MEMBERSHIP_CHOICES, default=MEMBERSHIP_BRONZE)
 
